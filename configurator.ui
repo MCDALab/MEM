@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Configurator</class>
+ <widget class="QDialog" name="Configurator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>226</width>
+    <height>189</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="3">
+    <widget class="QGroupBox" name="gbxConfiguration">
+     <property name="title">
+      <string>Configuração</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="1" column="1">
+       <widget class="QComboBox" name="cbxLanguage">
+        <item>
+         <property name="text">
+          <string>Português</string>
+         </property>
+         <property name="icon">
+          <iconset resource="imagens.qrc">
+           <normaloff>:/imagens/flag_brazil.png</normaloff>:/imagens/flag_brazil.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Francês</string>
+         </property>
+         <property name="icon">
+          <iconset resource="imagens.qrc">
+           <normaloff>:/imagens/flag_france.png</normaloff>:/imagens/flag_france.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Inglês</string>
+         </property>
+         <property name="icon">
+          <iconset resource="imagens.qrc">
+           <normaloff>:/imagens/flag_usa.png</normaloff>:/imagens/flag_usa.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Espanhol</string>
+         </property>
+         <property name="icon">
+          <iconset resource="imagens.qrc">
+           <normaloff>:/imagens/flag_spain.png</normaloff>:/imagens/flag_spain.png</iconset>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spbPrecision">
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblPrecision">
+        <property name="text">
+         <string>Precisão</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblLanguage">
+        <property name="text">
+         <string>Linguagem</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="bntCancel">
+     <property name="text">
+      <string>Cancelar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/imagens/cancel.png</normaloff>:/imagens/cancel.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="btnApply">
+     <property name="text">
+      <string>Aplicar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="imagens.qrc">
+       <normaloff>:/imagens/apply.png</normaloff>:/imagens/apply.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>cbxLanguage</tabstop>
+  <tabstop>spbPrecision</tabstop>
+  <tabstop>btnApply</tabstop>
+  <tabstop>bntCancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="imagens.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>bntCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Configurator</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>216</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
