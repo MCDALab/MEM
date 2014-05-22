@@ -55,6 +55,7 @@ public:
     void enableSave( bool value );
     void enableTable( bool value );
     void enableMatrixC( bool value );
+    void enableClose( bool value );
 
     void matrixB(int k, const qreal &tau, const int &rowCount, const int &colCount, QStandardItemModel *model, QStandardItemModel *modelResult, bool progress = true);
 
@@ -164,9 +165,11 @@ private slots:
 
     void on_actMatrixC_triggered();
 
+    void on_actHelp_triggered();
+
+    void on_actClose_triggered();
+
 private:
-
-
     void readLanguage( QString trad = "pt-BR" );
     void readConfiguration();
     void matrixALine();

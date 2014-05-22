@@ -5,14 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    QTextCodec* codec = QTextCodec::codecForName("CP1256");
-    QTextCodec::setCodecForLocale(codec);
     ui->setupUi(this);
-
-
-    qDebug() << tr("????");
-    qDebug() << codec->toUnicode("????");
-
 
     QSettings::setDefaultFormat( QSettings::IniFormat );
 
@@ -178,6 +171,13 @@ void MainWindow::enableMatrixC(bool value)
 {
     ui->actMatrixC->setEnabled(value);
     ui->actMatrixCMenu->setEnabled(value);
+}
+
+void MainWindow::enableClose(bool value)
+{
+
+    ui->actClose->setEnabled(value);
+    ui->actCloseMenu->setEnabled(value);
 }
 
 void MainWindow::matrixB(int k,
@@ -363,6 +363,7 @@ void MainWindow::importPaymentFileMEM()
         list << Language::language("weight") << Language::language("preference");
         modelWeight->setVerticalHeaderLabels(list);
         ui->tableMatrixWeight->setModel(modelWeight);
+        enableClose(true);
     }
 }
 
@@ -397,6 +398,7 @@ void MainWindow::on_actNew_triggered()
         setWindowTitle(Language::language("title"));
         recentFileActs[0]->setEnabled(true);
         enableMatrixC(false);
+        enableClose(true);
     }
 }
 
@@ -517,6 +519,7 @@ void MainWindow::openFileMEM(const QString &fileName)
     }
 
     ui->tabWidget->setCurrentIndex(0);
+    enableClose(true);
 }
 
 void MainWindow::on_actSave_triggered()
@@ -1500,7 +1503,7 @@ void MainWindow::on_actMatrixALine_toggled(bool arg1)
     if( arg1 == true )
     {
         tabMatrixALine = new QWidget(ui->tabWidget);
-        ui->tabWidget->addTab(tabMatrixALine,Language::language("matriz_a_linha"));
+        ui->tabWidget->addTab(tabMatrixALine,Language::language("matrix_a_line"));
 
         QHBoxLayout *horizontalLayout = new QHBoxLayout(tabMatrixALine);
         horizontalLayout->setSpacing(6);
@@ -1551,7 +1554,7 @@ void MainWindow::on_actResultRelative_toggled(bool arg1)
     if( arg1 == true )
     {
         tabRelativeResult = new QWidget(ui->tabWidget);
-        ui->tabWidget->addTab(tabRelativeResult,Language::language("matrix_a_line"));
+        ui->tabWidget->addTab(tabRelativeResult,Language::language("partial_result"));
 
         QHBoxLayout *horizontalLayout = new QHBoxLayout(tabRelativeResult);
         horizontalLayout->setSpacing(6);
@@ -1735,9 +1738,6 @@ void MainWindow::buildBLine()
     disconnect( Build->btnApply, SIGNAL(clicked()), window, SLOT(close()));
     disconnect(window, SIGNAL(finished(int)), this, SLOT(closeWindowBuild()));
 
-    window = NULL;
-    Build = NULL;
-
     ui->tableMatrixPayment->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableMatrixRelationship->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableMatrixWeight->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -1754,6 +1754,12 @@ void MainWindow::buildBLine()
     ui->actEditCriteria->setEnabled(false);
 
     ui->actGraphResult->setEnabled(true);
+
+    if( Build->cbxShowSensibilityTau->isChecked() )
+        on_actSensibilityGraphic_triggered();
+
+    window = NULL;
+    Build = NULL;
 
 }
 
@@ -2159,4 +2165,37 @@ void MainWindow::on_actMatrixC_triggered()
     max->exec();
     disconnect( max, SIGNAL(valueTableChanged(QAbstractItemModel*,QModelIndexList,QString)), this, SLOT(updateValueTable(QAbstractItemModel*,QModelIndexList,QString)));
     max = NULL;
+}
+
+void MainWindow::on_actHelp_triggered()
+{
+    QDesktopServices::openUrl(QUrl::fromUserInput((qApp->applicationDirPath()+"/help/"+ Language::actual() +".pdf")));
+}
+
+void MainWindow::on_actClose_triggered()
+{
+    on_actNew_triggered();
+
+    ui->actAddAlternativeMenu->setEnabled(false);
+    ui->actAddAlternative->setEnabled(false);
+    ui->actEditAlternative->setEnabled(false);
+    ui->actDeleteAlternative->setEnabled(false);
+
+
+    ui->actAddCriteriaMenu->setEnabled(false);
+    ui->actAddCriteria->setEnabled(false);
+    ui->actEditCriteria->setEnabled(false);
+    ui->actDeleteCriteria->setEnabled(false);
+
+    ui->actBuild->setEnabled(false);
+
+    enableSave(false);
+    enableTable(false);
+    enableMatrixC(false);
+
+    ui->actGraphResult->setEnabled(false);
+
+    enableClose(false);
+
+    ui->tabWidget->setEnabled(false);
 }

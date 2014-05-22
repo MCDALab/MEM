@@ -33,15 +33,6 @@
         </item>
         <item>
          <property name="text">
-          <string>Francês</string>
-         </property>
-         <property name="icon">
-          <iconset resource="imagens.qrc">
-           <normaloff>:/imagens/flag_france.png</normaloff>:/imagens/flag_france.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>Inglês</string>
          </property>
          <property name="icon">
@@ -56,6 +47,15 @@
          <property name="icon">
           <iconset resource="imagens.qrc">
            <normaloff>:/imagens/flag_spain.png</normaloff>:/imagens/flag_spain.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Francês</string>
+         </property>
+         <property name="icon">
+          <iconset resource="imagens.qrc">
+           <normaloff>:/imagens/flag_france.png</normaloff>:/imagens/flag_france.png</iconset>
          </property>
         </item>
        </widget>

@@ -71,5 +71,8 @@
         <file>imagens/document_empty.png</file>
         <file>imagens/document_empty_32.png</file>
         <file>imagens/aboutImage.png</file>
+        <file>imagens/Eng_UFF.png</file>
+        <file>imagens/table_close.png</file>
+        <file>imagens/table_close_32.png</file>
     </qresource>
 </RCC>

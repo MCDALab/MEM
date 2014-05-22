@@ -2,7 +2,8 @@
 
 Table::Table(QWidget *pai) : QTableView(pai)
 {
-    connect( verticalHeader(), &QHeaderView::sectionPressed, this, &Table::rowSelected );
+    //connect( verticalHeader(), &QHeaderView::sectionPressed, this, &Table::rowSelected );
+    connect(verticalHeader(), SIGNAL(sectionPressed(int)), this, SLOT(rowSelected(int)));
     connect(verticalHeader(), SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(customMenuContextVerticalHeader(QPoint)));
 
     connect(horizontalHeader(), SIGNAL(sectionPressed(int)), this, SLOT(columnSelected(int)));

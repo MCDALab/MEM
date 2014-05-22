@@ -468,16 +468,16 @@
      <addaction name="actEnglish"/>
      <addaction name="actEspanish"/>
      <addaction name="actFrench"/>
-     <addaction name="actArabic"/>
     </widget>
     <addaction name="actNewMenu"/>
     <addaction name="actOpenMenu"/>
     <addaction name="actSaveMenu"/>
+    <addaction name="actCloseMenu"/>
     <addaction name="separator"/>
     <addaction name="actConfiguration"/>
     <addaction name="menuLinguagem"/>
     <addaction name="separator"/>
-    <addaction name="actClose"/>
+    <addaction name="actExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -503,7 +503,6 @@
     </widget>
     <addaction name="menuCriteria"/>
     <addaction name="menuAlternative"/>
-    <addaction name="actMatrixCMenu"/>
     <addaction name="separator"/>
     <addaction name="actFindInTable"/>
     <addaction name="actReplaceTable"/>
@@ -516,6 +515,7 @@
     <addaction name="actMatrixBLine"/>
     <addaction name="actResultRelative"/>
     <addaction name="separator"/>
+    <addaction name="actMatrixCMenu"/>
     <addaction name="actMirror"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
@@ -557,6 +557,7 @@
    <addaction name="actNew"/>
    <addaction name="actOpen"/>
    <addaction name="actSave"/>
+   <addaction name="actClose"/>
    <addaction name="separator"/>
    <addaction name="actAddCriteria"/>
    <addaction name="actAddAlternative"/>
@@ -592,7 +593,7 @@
   <action name="actClose">
    <property name="icon">
     <iconset resource="imagens.qrc">
-     <normaloff>:/imagens/cross.png</normaloff>:/imagens/cross.png</iconset>
+     <normaloff>:/imagens/table_close_32.png</normaloff>:/imagens/table_close_32.png</iconset>
    </property>
    <property name="text">
     <string>Fechar</string>
@@ -683,6 +684,9 @@
    </property>
   </action>
   <action name="actEspanish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/imagens/flag_spain.png</normaloff>:/imagens/flag_spain.png</iconset>
@@ -808,6 +812,9 @@
    </property>
   </action>
   <action name="actFrench">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="imagens.qrc">
      <normaloff>:/imagens/flag_france.png</normaloff>:/imagens/flag_france.png</iconset>
@@ -879,13 +886,36 @@
     <string>Matrix C</string>
    </property>
   </action>
-  <action name="actArabic">
+  <action name="actExit">
    <property name="icon">
-    <iconset>
-     <normaloff>imagens/flag_sa.png</normaloff>imagens/flag_sa.png</iconset>
+    <iconset resource="imagens.qrc">
+     <normaloff>:/imagens/cross.png</normaloff>:/imagens/cross.png</iconset>
    </property>
    <property name="text">
-    <string>Árabe</string>
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="actCloseMenu">
+   <property name="icon">
+    <iconset resource="imagens.qrc">
+     <normaloff>:/imagens/table_close.png</normaloff>:/imagens/table_close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fechar</string>
+   </property>
+   <property name="toolTip">
+    <string>Fechar</string>
+   </property>
+  </action>
+  <action name="actResultEnd">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Resultado final</string>
    </property>
   </action>
  </widget>
@@ -910,22 +940,6 @@
   <include location="imagens.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>actClose</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>actMirror</sender>
    <signal>toggled(bool)</signal>
@@ -1038,6 +1052,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actCloseMenu</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_actClose_triggered()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_actAddCriteria_triggered()</slot>
@@ -1046,5 +1092,6 @@
   <slot>on_actSave_triggered()</slot>
   <slot>on_actNew_triggered()</slot>
   <slot>on_actMatrixC_triggered()</slot>
+  <slot>on_actClose_triggered()</slot>
  </slots>
 </ui>

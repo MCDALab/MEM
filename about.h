@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMouseEvent>
+#include <language.h>
 
 namespace Ui {
     class About;

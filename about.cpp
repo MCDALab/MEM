@@ -7,6 +7,10 @@ About::About(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::WindowTitleHint | Qt::CustomizeWindowHint );
+    ui->lblContact->setText(Language::language("contact"));
+    ui->lblContactLink->setText("<html><head/><body><p><a href=\""+Language::language("contact_link")+"\"><span style=\" text-decoration: underline; color:#0000ff;\">"+Language::language("contact_link")+"</span></a></p></body></html>");
+    ui->lblLicense->setText(Language::language("license"));
+    ui->lblVersion->setText(Language::language("version"));
 }
 
 About::~About()

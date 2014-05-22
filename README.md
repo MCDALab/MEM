@@ -1,4 +1,0 @@
-MEM
-===
-
-Multiplex Electionis Methodus

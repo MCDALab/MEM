@@ -29,13 +29,15 @@ void MatrixC::setModel(QStandardItemModel *model)
 {
     ui->matrixC->setModel(model);
     this->model = model;
-    QObject::connect(model,&QStandardItemModel::itemChanged,this,&MatrixC::updateRow);
+    //QObject::connect(model,&QStandardItemModel::itemChanged,this,&MatrixC::updateRow);
+    connect(model, SIGNAL(itemChanged(QStandardItem*)), this, SLOT(updateRow(QStandardItem*)));
 }
 
 void MatrixC::setModelNext(QStandardItemModel *model)
 {
     this->modelNext = model;
-    QObject::connect(model,&QStandardItemModel::itemChanged,this,&MatrixC::updateRow);
+    //QObject::connect(model,&QStandardItemModel::itemChanged,this,&MatrixC::updateRow);
+    connect(model, SIGNAL(itemChanged(QStandardItem*)), this, SLOT(updateRow(QStandardItem*)));
 }
 
 void MatrixC::setMirror(bool value)
